@@ -1,6 +1,58 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# <div style="border:solid Chocolate 2px; padding: 40px">
+# 
+# <b> Дмитрий, привет!👋</b>
+# 
+# Меня зовут Алексей Гриб, и я буду ревьюером твоего проекта. 
+# 
+# Сразу хочу предложить в дальнейшем общаться на "ты" - надеюсь, так будет комфортнее:) Но если это неудобно, обязательно дай знать, и мы придумаем что-нибудь ещё!
+#     
+# Цель ревью - не искать ошибки в твоём проекте, а помочь тебе сделать твою работу ещё лучше, устранив недочёты и приблизив её к реальным задачам специалиста по работе с данными. Поэтому не расстраивайся, если что-то не получилось с первого раза - это нормально, и это поможет тебе вырасти!
+#     
+# Ты можешь найти мои комментарии, обозначенные <font color='green'>зеленым</font>, <font color='gold'>желтым</font> и <font color='red'>красным</font> цветами, например:
+# 
+# <br/>
+# 
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> похвала, рекомендации «со звёздочкой», полезные лайфхаки, которые сделают и без того красивое решение ещё более элегантным.
+# </div>
+# 
+# <br/>
+# 
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> некритичные ошибки или развивающие рекомендации на будущее. 
+# </div>
+# 
+# 
+# <br/>
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b>
+# критичные ошибки, которые обязательно нужно исправить.
+# </div>
+# 
+#     
+# Пожалуйста, не удаляй мои комментарии, они будут особенно полезны для нашей работы в случае повторной проверки проекта. 
+#     
+# Ты также можешь задавать свои вопросы, реагировать на мои комментарии, делать пометки и пояснения - полная творческая свобода! Но маленькая просьба - пускай они будут отличаться от моих комментариев, это поможет избежать путаницы в нашем общении:)
+# Например, вот так:
+#     
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# 
+# *твой текст*
+# </div>
+#     
+# Давай посмотрим на твой проект!
+
 # # Анализ лояльности пользователей Яндекс Афиши
 
 # ## Этапы выполнения проекта
@@ -11,7 +63,7 @@
 # 
 # **Задача 1.1:** Напишите SQL-запрос, выгружающий в датафрейм pandas необходимые данные. Используйте следующие параметры для подключения к базе данных `data-analyst-afisha`:
 # 
-
+# 
 # 
 # Для выгрузки используйте запрос из предыдущего урока и библиотеку SQLAlchemy.
 # 
@@ -34,6 +86,13 @@
 # 
 # ---
 # 
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#  
+# <b>Все отлично!👍:</b> Хорошее вступление!
+#     
+# В нём есть всё, что необходимо, чтобы понять суть проекта с первых строк отчёта!
 
 # In[1]:
 
@@ -72,17 +131,26 @@ import numpy as np
 from phik import phik_matrix
 from scipy import stats
 
+
+# In[ ]:
+
+
 import os
 from dotenv import load_dotenv
 
 
-# In[6]:
+# In[ ]:
+
 
 DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT")
 DB_NAME = os.getenv("DB_NAME")
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
+
+
+# In[7]:
+
 
 connection_string = 'postgresql://{}:{}@{}:{}/{}'.format(
     DB_USER,
@@ -93,11 +161,17 @@ connection_string = 'postgresql://{}:{}@{}:{}/{}'.format(
 
 )
 
+
 # In[8]:
 
 
 engine = create_engine(connection_string)
 
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Библиотеки импортировали, коннектор сделали - отлично!
 
 # In[9]:
 
@@ -126,14 +200,44 @@ ORDER BY user_id;
 df = pd.read_sql_query(query, con=engine)
 
 
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Данные выгружены из базы.
+
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> Запросы следует делать более читаемыми. Например, ресурс https://sqlformat.org/ автоматически преобразует написанный SQL-запрос в унифицированный формат в зависимости от выбранного диалекта SQL, это помогает придать запросу более читабельный вид и повышает его читабельность.
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# 
+# Да, запрос изначально был написан читаемом виде. Это всё следствие многолетней привычки экономить место на экране
+# </div>
+
 # In[12]:
 
 
 df.info()
-print(df)
+display(df.head(10))
 tenge.info()
-print(tenge)
+display(tenge.head(10))
 
+
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> 
+# 
+# Метод `.print()` не очень подходит для работы с таблицами типа `pd.DataFrame`, так как выводит их на экран просто как отформатированный текст. Для отображения небольших таблиц можно воспользоваться методом `.head()`, для таблиц побольше - модулем `display`.
+#         
+# </div>
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# Исправил
+#     </div>
 
 # ---
 # 
@@ -146,6 +250,31 @@ print(tenge)
 # ---
 
 # Информация о датафреймах приведена выше. 290611 строк в основной выгрузке. 357 - в выгрузке с сайта ЦБ. В целом данные выгружены верно. Типы определены корректно, кроме даты order_dt и data в первом и втором датафрейме. Проверки пропусков осуществлялись на этапе разработки запроса. 
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Первичный осмотр данных выполнен.
+
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b> Нужно наметить шаги по их обработке.
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# 
+# Шаги ниже:
+# </div>
+
+# Шаги:
+# 1. Корректировка типов данных. Не требуется. Данные определились корректно.
+# 2. Проверка на выбросы и аномальные значения.
+# 3. Обработка выбросов в зависимости от их значений
+# 4. объединение датасетов
+# 5. пересчет выручки в соответствии с курсом
+# 6. проверка значений в новых полях
 
 # ---
 # 
@@ -173,10 +302,6 @@ print(tenge)
 
 df['order_dt'] = pd.to_datetime(df['order_dt'], errors='coerce', format='%Y-%m-%d')
 tenge['data'] = pd.to_datetime(tenge['data'], errors='coerce', format='%Y-%m-%d')
-# print(df.info())
-# print(tenge.info())
-# print(df)
-# print(tenge)
 
 
 # In[14]:
@@ -187,25 +312,27 @@ main.loc[main['currency_code'] == 'kzt', 'revenue_rub'] = main['revenue'] / main
 main.loc[main['currency_code'] != 'kzt', 'revenue_rub'] = main['revenue']
 
 
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Выручка приведена к единой валюте.
+
+# Итоги конвертации и проверка нового поля на пропуски:
+
 # In[15]:
 
 
-main[['currency_code','curs','revenue','revenue_rub']].loc[main['currency_code'] == 'kzt'].head(10)
-
-
-# In[16]:
-
-
-main[['currency_code','curs','revenue','revenue_rub']].loc[main['currency_code'] == 'rub'].head(10)
-
-
-# In[17]:
-
-
-main.isnull().sum()
+display(main[['currency_code','curs','revenue','revenue_rub']].loc[main['currency_code'] == 'kzt'].head(10))
+display(main[['currency_code','curs','revenue','revenue_rub']].loc[main['currency_code'] == 'rub'].head(10))
+display(main.isnull().sum())
 
 
 # Пропуски - только в поле days-since_prev. Конертация курсов прошла успешно.
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Изучены пропуски - всё ожидаемо.
 
 # ---
 # 
@@ -225,28 +352,27 @@ main.isnull().sum()
 # 
 # ---
 
-# Пропуски - только в `days_since_prev` - установлено ранее. Типы преобразованы
+# Пропуски - только в `days_since_prev` - установлено ранее. Типы преобразованы. Лишние поля - удаляем.
 
-# In[18]:
+# In[16]:
 
 
 main = main.drop(['curs','cdx','data','currency_code','revenue','nominal'], axis=1)
 main.head(5)
 
 
-# In[19]:
+# In[17]:
 
 
 print(pd.unique(main['event_type_main']))
 print(pd.unique(main['service_name']))
-# print(pd.unique(main['tickets_count']))
-# print(pd.unique(main['region_name']))
-# print(main['city_name'].value_counts().sum())
+display(main['event_type_main'].value_counts())
+# display(main['service_name'].value_counts())
 
 
 # Явных существенных ошибок в данных не зафиксировано. В поле event_type_main значение "другое" может использоваться в качестве заглушки. Уникальность городов, регионов, операторов проверялась на этапе разработки запроса. На случай, если в этих полях все жеимеются неявные дубликаты, приведем их в upper case и удалим явные дубликаты
 
-# In[20]:
+# In[18]:
 
 
 main['service_name_upper'] = main['service_name'].str.upper()
@@ -254,7 +380,7 @@ main['region_name_upper'] = main['region_name'].str.upper()
 main['city_name_upper'] = main['city_name'].str.upper()
 
 
-# In[21]:
+# In[19]:
 
 
 d_subset=['user_id','device_type_canonical','order_id','tickets_count','event_id','event_name',
@@ -267,11 +393,34 @@ main[main['is_duplicated']]
 
 # Дублированных строк нет. Удалим поля с upper_case
 
-# In[22]:
+# In[20]:
 
 
 main = main.drop(['service_name_upper','region_name_upper','city_name_upper','is_duplicated'], axis=1)
 main.head(5)
+
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Категориальные признаки проверены на предмет аномалий.
+
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b> Проверить нужно все признаки, задействованные в проекте. 
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+#     Так все же поля проверены на пропуски и неявные дублирования. event_name нам здесь вообще не нужен. все заказы - с уникальными order_id. Далее, все новые поля тоже проверяю на правильность заполнения.
+# 
+# </div>
+
+# In[21]:
+
+
+main['order_id'].value_counts().sum()
 
 
 # Проверьте распределение численных данных и наличие в них выбросов. Для этого используйте статистические показатели, гистограммы распределения значений или диаграммы размаха.
@@ -284,7 +433,7 @@ main.head(5)
 
 # Сводные таблицы cо средним, минимальным, максимальным значениями (для экономии места и читаемости вывод некоторых представлений сводных таблиц закомментирован):
 
-# In[23]:
+# In[22]:
 
 
 main['ticket_price'] = main['revenue_rub']/main['tickets_count']
@@ -293,12 +442,9 @@ main_pivot_region = main.pivot_table(values='revenue_rub', index='region_name', 
 main_pivot_city = main.pivot_table(values='revenue_rub', index='city_name', aggfunc=['mean','min','max','count','sum','median'])
 main_pivot_operator = main.pivot_table(values='revenue_rub', index='service_name', aggfunc=['mean','min','max','count','sum','median'])
 main_pivot_event[['min','max','mean','count','sum','median']]
-# print(main_pivot_region[['min','max','mean']])
-# print(main_pivot_city[['min','max','mean']])
-# print(main_pivot_operator[['min','max','mean']])
 
 
-# In[24]:
+# In[23]:
 
 
 main_pivot_event_t = main.pivot_table(values='tickets_count', index='event_type_main', aggfunc=['mean','min','max','count','sum','median'])
@@ -306,24 +452,21 @@ main_pivot_region_t = main.pivot_table(values='tickets_count', index='region_nam
 main_pivot_city_t = main.pivot_table(values='tickets_count', index='city_name', aggfunc=['mean','min','max','count','sum','median'])
 main_pivot_operator_t = main.pivot_table(values='tickets_count', index='service_name', aggfunc=['mean','min','max','count','sum','median'])
 main_pivot_event_t[['min','max','mean','count','sum','median']]
-# print(main_pivot_region[['min','max','mean']])
-# print(main_pivot_city[['min','max','mean']])
-# print(main_pivot_operator[['min','max','mean']])
 
 
-# In[25]:
+# In[24]:
 
 
-main_pivot_event_tp = main.pivot_table(values='ticket_price', index='event_type_main', aggfunc=['mean','min','max','count','sum','median'])
-main_pivot_region_tp = main.pivot_table(values='ticket_price', index='region_name', aggfunc=['mean','min','max','count','sum','median'])
-main_pivot_city_tp = main.pivot_table(values='ticket_price', index='city_name', aggfunc=['mean','min','max','count','sum','median'])
+main_pivot_event_tp    = main.pivot_table(values='ticket_price', index='event_type_main', aggfunc=['mean','min','max','count','sum','median'])
+main_pivot_region_tp   = main.pivot_table(values='ticket_price', index='region_name', aggfunc=['mean','min','max','count','sum','median'])
+main_pivot_city_tp     = main.pivot_table(values='ticket_price', index='city_name', aggfunc=['mean','min','max','count','sum','median'])
 main_pivot_operator_tp = main.pivot_table(values='ticket_price', index='service_name', aggfunc=['mean','min','max','count','sum','median'])
 main_pivot_event_tp[['min','max','mean','count','sum','median']]
 
 
 # Присутствуют выбросы - очень дорогие заказы по 81 тыс. руб. (уже позже посчитал цену билета - 21.8 тыс. руб., также можно ситать выбросом - т.е. это не влияние большого количества билетов в заказе.)
 
-# In[26]:
+# In[25]:
 
 
 a = main_pivot_event[['median','mean']]
@@ -348,7 +491,7 @@ b.sort_values(by=b.columns[0],ascending=False).plot(kind='bar', xlabel='Тип �
 plt.show()
 
 
-# In[27]:
+# In[26]:
 
 
 #Гистограммы
@@ -359,7 +502,7 @@ plt.ylabel('frequency')
 plt.show()
 
 
-# In[28]:
+# In[27]:
 
 
 plt.figure(figsize=(14, 10)) 
@@ -376,7 +519,7 @@ plt.show()
 
 # Отфильтруем датафрейм по 99 квантилю по полю revenue_rub
 
-# In[29]:
+# In[28]:
 
 
 threshold = main['revenue_rub'].quantile(0.99)
@@ -384,7 +527,7 @@ threshold = main['revenue_rub'].quantile(0.99)
 main_f = main[main['revenue_rub'] <= threshold]
 
 
-# In[30]:
+# In[29]:
 
 
 main['revenue_rub'].plot(kind='hist', bins=222)
@@ -392,7 +535,7 @@ plt.axvline(threshold, color='red', linestyle='--', label='99-й перцент�
 plt.legend()
 
 
-# In[31]:
+# In[30]:
 
 
 print('Отфильтровано строк: ',main.shape[0]-main_f.shape[0])
@@ -400,33 +543,48 @@ print('Отфильтровано строк: ',main.shape[0]-main_f.shape[0])
 
 # Посмотрим, как поменялась гистограмма (график по городам и регионам аналогичен, но из-за большого количества сущностей плохо читаем, плюс экономлю время):
 
-# In[32]:
+# In[31]:
 
 
-main_f_pivot_event = main_f.pivot_table(values='revenue_rub', index='event_type_main', aggfunc=['mean','min','max','count','sum','median'])
-c = main_f_pivot_event[['median','mean']]
-d = main_f_pivot_event[['max']]
-c.sort_values(by=c.columns[0],ascending=False).plot(kind='bar', xlabel='Тип события', ylabel='Стоимость, руб.', legend=True
-                 , rot=90, 
-    title='Медианная и средняя величина заказа', 
-    figsize=(14,5),
-    fontsize = 12,
-    color = ['royalblue','navy'],
-    edgecolor='black'
-    )
-plt.show()
-d.sort_values(by=d.columns[0],ascending=False).plot(kind='bar', xlabel='Тип события', ylabel='Стоимость, руб.', legend=False
-                 , rot=90, 
-    title='Максимальная величина заказа', 
-    figsize=(14,5),
-    fontsize = 12,
-    color = ['royalblue','navy'],
-    edgecolor='black'
-    )
-plt.show()
+# main_f_pivot_event = main_f.pivot_table(values='revenue_rub', index='event_type_main', aggfunc=['mean','min','max','count','sum','median'])
+# c = main_f_pivot_event[['median','mean']]
+# d = main_f_pivot_event[['max']]
+# c.sort_values(by=c.columns[0],ascending=False).plot(kind='bar', xlabel='Тип события', ylabel='Стоимость, руб.', legend=True
+#                  , rot=90, 
+#     title='Медианная и средняя величина заказа', 
+#     figsize=(14,5),
+#     fontsize = 12,
+#     color = ['royalblue','navy'],
+#     edgecolor='black'
+#     )
+# plt.show()
+# d.sort_values(by=d.columns[0],ascending=False).plot(kind='bar', xlabel='Тип события', ylabel='Стоимость, руб.', legend=False
+#                  , rot=90, 
+#     title='Максимальная величина заказа', 
+#     figsize=(14,5),
+#     fontsize = 12,
+#     color = ['royalblue','navy'],
+#     edgecolor='black'
+#     )
+# plt.show()
 
 
 # После фильтрации по 99 квантилю распределение данных по заказам стало более равномерным по разным типам событий.
+
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b> На данном этапе нужно только изучить выбросы без дополнительного улгубления в анализ по категориям, в противном случае возникает вопрос полноты покрытия - почему только тип события без остальных категорий?
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# 
+# Тут логика следующая: мы обнаружили выбросы в поле стоимость. Нарисовали боксплоты в двух вариантах - с отображением выбросов и без их отображения. Далее я рисую гистограммы, чтобы посмотреть, как данные изменились после удаления выбросов. Перед графиками я сделал пометку, что оставлю только график по типам мероприятий для экономии места. Т.к. да, в этом разеделе эти графики не требуются. В строке перед графиками код написан так, чтобы можно было просто заменить только поле `event_type_main` на другое, тогда и гистограмма будет обновлена соответствующим образом. 
+#     
+# Код оставлю, но закомментирую. 
+# 
+# </div>
 
 # ---
 # 
@@ -458,16 +616,16 @@ plt.show()
 # ---
 # 
 
-# In[33]:
+# In[32]:
 
 
 #backup датафрейма
-df = main
+df = main.copy()
 # Сначала сортируем по user_id и времени заказа (order_ts)
-df_sorted = df.sort_values(['user_id', 'order_ts']).reset_index(drop=True)
+profile = df.sort_values(['user_id', 'order_ts']).reset_index(drop=True)
 
 # Группируем по user_id и агрегируем
-profile = df_sorted.groupby('user_id', sort=False).agg(
+profile = profile.groupby('user_id', sort=False).agg(
     first_order_dt=('order_dt', 'min'),          # дата первого заказа
     last_order_dt=('order_dt', 'max'),           # дата последнего заказа
     
@@ -487,17 +645,18 @@ profile = df_sorted.groupby('user_id', sort=False).agg(
 profile['is_two'] = (profile['total_orders'] >= 2).astype(int)
 profile['is_five'] = (profile['total_orders'] >= 5).astype(int)
 
-# (опционально) приведём типы, если нужно
-# profile['first_order_dt'] = pd.to_datetime(profile['first_order_dt'])
-# profile['last_order_dt'] = pd.to_datetime(profile['last_order_dt'])
 
-
-# In[34]:
+# In[33]:
 
 
 profile.info()
-profile
+display(profile.head(10))
 
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Профиль пользователя собран, добавлены новые признаки.
 
 # ---
 # 
@@ -525,7 +684,7 @@ profile
 # 
 # Если вы проведёте фильтрацию, то вычислите объём отфильтрованных данных и выведите статистические показатели по обновлённому датасету.
 
-# In[35]:
+# In[34]:
 
 
 user_count = profile['user_id'].value_counts().sum()
@@ -538,7 +697,7 @@ print('Доля пользователей, совершивших 2 и боле
 print('Доля пользователей, совершивших 5 и более заказов: ', round(is_five_share,2))
 
 
-# In[36]:
+# In[35]:
 
 
 # Также изучите статистические показатели:
@@ -547,7 +706,7 @@ print('Доля пользователей, совершивших 5 и боле
 # по среднему количеству дней между покупками. avg_days_between_orders
 
 
-# In[37]:
+# In[36]:
 
 
 print('total_orders:')
@@ -569,14 +728,14 @@ print('Среднее:', profile['avg_days_between_orders'].mean())
 print('Медиана:', profile['avg_days_between_orders'].median())
 
 
-# In[38]:
+# In[37]:
 
 
 profile_sorted = profile.sort_values(['total_orders'], ascending = False)#.reset_index(drop=True)
 profile_sorted
 
 
-# In[39]:
+# In[38]:
 
 
 plt.figure(figsize=(7, 2)) 
@@ -610,28 +769,28 @@ plt.show()
 # Боксплоты со включенной опцией отображения выбросов (showfliers=True) показывают наличие выбросов по всем исследумеым полям. Однако, представляется, что выбросы в полях "среднее число билетов в заказе" и "среднее количество дней" можно оставить, т.к. они, вероятно, не являются аномалией (либо являются, но не во всех случаях): кто-то может покупать 5-12 билетов на компанию из нескольких человек, посещать мероприятия реже 50 дней.  
 # Обращает на себя внимание наличие пользователей с большим количеством заказов. Обычное количество заказов - до 5. Иногда - 11. Тем не менее, существуют пользователи с заказами в несколько тысяч (до 10) билетов. Вероятно, это корпоративные покупатели, агентства и т.п.  Скорее всего, они не нужны в исследовании и их можно исключить. Последовательно отфильтруем датафрейм по 99 и 95 процентилю. После фильтрации посмотрим, как изменятся боксплоты.
 
-# In[40]:
+# In[39]:
 
 
 threshold99 = profile['total_orders'].quantile(0.99)
 threshold95 = profile['total_orders'].quantile(0.95)
 
 
-# In[41]:
+# In[40]:
 
 
 profile99 = profile[profile['total_orders'] <= threshold99]
 profile95 = profile[profile['total_orders'] <= threshold95]
 
 
-# In[42]:
+# In[41]:
 
 
 print(f'Удалено строк, 99% {profile.shape[0]-profile99.shape[0]}. Осталось {profile99.shape[0]} строк.')
 print(f'Удалено строк, 95% {profile.shape[0]-profile95.shape[0]}. Осталось {profile95.shape[0]} строк.')
 
 
-# In[43]:
+# In[42]:
 
 
 plt.figure(figsize=(7, 2)) 
@@ -662,7 +821,7 @@ plt.xlabel('Количество заказов. Фильтр по 95% перц�
 plt.show()
 
 
-# In[44]:
+# In[43]:
 
 
 #гистограмма95
@@ -677,14 +836,29 @@ plt.show()
 
 # После фильтрации выбросы по количеству заказов не пропадают полностью, но их количество существенно сокращается, и, как видно из гистограммы выше, в целом таких пользователей немного. Можно оставаить фильтрацию по 95% перцентилю. Доступных данных достаточно для анализа.
 
-# In[45]:
+# In[44]:
 
 
-df = profile95 #сохраняем финальный датафрейм для анализа
+df = profile95.copy() #сохраняем финальный датафрейм для анализа
 df.head(5)
 
 
-# In[46]:
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> 
+# 
+# Делая копию или срез какой-то таблицы, стоит использовать метод `copy()`: используя простое присвивание вида `a=b`, мы в переменную `a` помещаем не новый и самостоятельный объект в памяти, а всего лишь новую ссылку на объект в памяти, на который ссылается `b`. Как итог, внеся изменения в `a`, ты увидишь их и в `b`, и наоборот. Метод `copy()` позволяет создавать именно новые объекты в памяти.
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# 
+# Вероятно сказывается влияние других языков программирования)
+# Везде или почти везде поправил это. В следующий раз буду учитывать.
+# 
+# </div>
+
+# In[45]:
 
 
 print('Обновленные данные после фильтрации по 95 процентилю:')
@@ -716,6 +890,11 @@ print('Среднее:', profile95['avg_days_between_orders'].mean())
 print('Медиана:', profile95['avg_days_between_orders'].median())
 
 
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Изучены статистики по профилю пользователя, удалены выбросы.
+
 # ---
 # 
 # ### 4. Исследовательский анализ данных
@@ -745,72 +924,123 @@ print('Медиана:', profile95['avg_days_between_orders'].median())
 
 # Рассчитаем сводные таблицы по группам пользователей. Учитывая задания из следующей задачи сразу посчитаем долю пользователей, совершивших два и более заказов
 
+# In[46]:
+
+
+pt = pd.pivot_table(data=df, index='first_event_type', values=['total_orders'], columns='is_two', aggfunc=['count'] )
+events = pd.DataFrame(pt)
+events[('count', 'total_orders', 'total')] = events[('count', 'total_orders', 0)]+events[('count', 'total_orders', 1)]
+events[('count', 'total_orders', 'share2')] = events[('count', 'total_orders', 1)]/(events[('count', 'total_orders', 0)]+events[('count', 'total_orders', 1)])
+events[('count', 'total_orders', 'share_tot')] = (events[('count', 'total_orders', 0)]+events[('count', 'total_orders', 1)])/(events[('count', 'total_orders', 'total')].sum())
+
+
 # In[47]:
 
 
-pt_fe = pd.pivot_table(data=df, index='first_event_type', values=['total_orders'], columns='is_two', aggfunc=['count'] )
-df_fe = pd.DataFrame(pt_fe)
-df_fe[('count', 'total_orders', 'total')] = df_fe[('count', 'total_orders', 0)]+df_fe[('count', 'total_orders', 1)]
-df_fe[('count', 'total_orders', 'share2')] = df_fe[('count', 'total_orders', 1)]/(df_fe[('count', 'total_orders', 0)]+df_fe[('count', 'total_orders', 1)])
-df_fe[('count', 'total_orders', 'share_tot')] = (df_fe[('count', 'total_orders', 0)]+df_fe[('count', 'total_orders', 1)])/(df_fe[('count', 'total_orders', 'total')].sum())
+pt = pd.pivot_table(data=df, index='first_device', values=['total_orders'], columns='is_two', aggfunc=['count'] )
+device = pd.DataFrame(pt)
+device[('count', 'total_orders', 'total')] = device[('count', 'total_orders', 0)]+device[('count', 'total_orders', 1)]
+device[('count', 'total_orders', 'share2')] = device[('count', 'total_orders', 1)]/(device[('count', 'total_orders', 0)]+device[('count', 'total_orders', 1)])
+device[('count', 'total_orders', 'share_tot')] = (device[('count', 'total_orders', 0)]+device[('count', 'total_orders', 1)])/(device[('count', 'total_orders', 'total')].sum())
 
 
 # In[48]:
 
 
-pt_fd = pd.pivot_table(data=df, index='first_device', values=['total_orders'], columns='is_two', aggfunc=['count'] )
-df_fd = pd.DataFrame(pt_fd)
-df_fd[('count', 'total_orders', 'total')] = df_fd[('count', 'total_orders', 0)]+df_fd[('count', 'total_orders', 1)]
-df_fd[('count', 'total_orders', 'share2')] = df_fd[('count', 'total_orders', 1)]/(df_fd[('count', 'total_orders', 0)]+df_fd[('count', 'total_orders', 1)])
-df_fd[('count', 'total_orders', 'share_tot')] = (df_fd[('count', 'total_orders', 0)]+df_fd[('count', 'total_orders', 1)])/(df_fd[('count', 'total_orders', 'total')].sum())
+pt = pd.pivot_table(data=df, index='first_region', values=['total_orders'], columns='is_two', aggfunc=['count'] )
+region = pd.DataFrame(pt)
+region[('count', 'total_orders', 'total')] = region[('count', 'total_orders', 0)]+region[('count', 'total_orders', 1)]
+region[('count', 'total_orders', 'share2')] = region[('count', 'total_orders', 1)]/(region[('count', 'total_orders', 0)]+region[('count', 'total_orders', 1)])
+region[('count', 'total_orders', 'share_tot')] = (region[('count', 'total_orders', 0)]+region[('count', 'total_orders', 1)])/(region[('count', 'total_orders', 'total')].sum())
+region=region.sort_values(by=region.columns[2], ascending=False)#.head(10)
+region10=region.sort_values(by=region.columns[2], ascending=False).head(10)
 
 
 # In[49]:
 
 
-pt_fr = pd.pivot_table(data=df, index='first_region', values=['total_orders'], columns='is_two', aggfunc=['count'] )
-df_fr = pd.DataFrame(pt_fr)
-df_fr[('count', 'total_orders', 'total')] = df_fr[('count', 'total_orders', 0)]+df_fr[('count', 'total_orders', 1)]
-df_fr[('count', 'total_orders', 'share2')] = df_fr[('count', 'total_orders', 1)]/(df_fr[('count', 'total_orders', 0)]+df_fr[('count', 'total_orders', 1)])
-df_fr[('count', 'total_orders', 'share_tot')] = (df_fr[('count', 'total_orders', 0)]+df_fr[('count', 'total_orders', 1)])/(df_fr[('count', 'total_orders', 'total')].sum())
-df_fr=df_fr.sort_values(by=df_fr.columns[2], ascending=False)#.head(10)
-df_fr10=df_fr.sort_values(by=df_fr.columns[2], ascending=False).head(10)
+pt = pd.pivot_table(data=df, index='first_service', values=['total_orders'], columns='is_two', aggfunc=['count'] )
+service = pd.DataFrame(pt)
+service[('count', 'total_orders', 'total')] = service[('count', 'total_orders', 0)]+service[('count', 'total_orders', 1)]
+service[('count', 'total_orders', 'share2')] = service[('count', 'total_orders', 1)]/(service[('count', 'total_orders', 0)]+service[('count', 'total_orders', 1)])
+service[('count', 'total_orders', 'share_tot')] = (service[('count', 'total_orders', 0)]+service[('count', 'total_orders', 1)])/(service[('count', 'total_orders', 'total')].sum())
+service=service.sort_values(by=service.columns[2], ascending=False)#.head(10)
+service10=service.sort_values(by=service.columns[2], ascending=False).head(10)
 
+
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b> Тут и далее следует давать переменным информативные имена - сейчас без анализа кода нельзя понять, что содержится в переменных.
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# ок. тут снова привычка сокращать место: 
+#     PT - pivot table
+#     DF - dataframe
+#     суффиксы - первые буквы исследуемых полей. fs - first_service, fr - first_region и тд.
+#     В этом разделе считаю сводные таблицы и добавляю к ним дополнительные поля, чтобы: 
+#     1. видеть все данные, 
+#     2. проверить, что все показатели правильно посчитались, 
+#     3. использовать эти датафреймы в следующих разделах. 
+#     
+# Так, например, датафрейм `df_fe` хранит сводную таблицу, хранящую для каждого типа мероприятия количество пользователей с 1 или более заказов, суммарное количество пользователей, долю is_two=1 и долю мероприятия. Такой датафрейм с указанием нужных полей можно подать на вход в график, и без необходимости снова считать нужные показатели быстро подготовить как разщные графики по одному датафрейму, так и, меняя префиксы в названии датафрейма, быстро строить графики для других полей. 
+#     
+# Переименовал df_fe, df_fd, df_fr, df_fs в events, device, region, service. 
+# </div>
+
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> Для небинарных признаков доли удобнее считать с помощью `value_counts(normalize=True)`. Текущий подход очень громоздкий и содержит расчёт лишней информации.
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+#     
+# Да, но это будет доля в общем количестве - share_total
+# </div>
 
 # In[50]:
 
 
-pt_fs = pd.pivot_table(data=df, index='first_service', values=['total_orders'], columns='is_two', aggfunc=['count'] )
-df_fs = pd.DataFrame(pt_fs)
-df_fs[('count', 'total_orders', 'total')] = df_fs[('count', 'total_orders', 0)]+df_fs[('count', 'total_orders', 1)]
-df_fs[('count', 'total_orders', 'share2')] = df_fs[('count', 'total_orders', 1)]/(df_fs[('count', 'total_orders', 0)]+df_fs[('count', 'total_orders', 1)])
-df_fs[('count', 'total_orders', 'share_tot')] = (df_fs[('count', 'total_orders', 0)]+df_fs[('count', 'total_orders', 1)])/(df_fs[('count', 'total_orders', 'total')].sum())
-df_fs=df_fs.sort_values(by=df_fs.columns[2], ascending=False)#.head(10)
-df_fs10=df_fs.sort_values(by=df_fs.columns[2], ascending=False).head(10)
+df['first_event_type'].value_counts(normalize=True)
 
 
 # In[51]:
 
 
-df_fe #первые мероприятия
+events #первые мероприятия
 
 
 # In[52]:
 
 
-df_fd #первое устройство
+device #первое устройство
 
 
 # In[53]:
 
 
-df_fr #первый регион
+region.head(10) #первый регион
 
+
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b> При анализе высокочастотных категорий стоит выводить ТОП-10 или ТОП-15 значений для более фокусного анализа.
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# 
+# Исправлено
+# </div>
 
 # In[54]:
 
 
-df_fs.head(10)#первый оператор
+service.head(10)#первый оператор
 
 
 # *Подсчитайте общее количество пользователей в каждом сегменте и их долю в разрезе каждого признака. Сегмент — это группа пользователей, объединённых определённым признаком, то есть объединённые принадлежностью к категории. Например, все клиенты, сделавшие первый заказ с мобильного телефона, — это сегмент.*
@@ -819,7 +1049,21 @@ df_fs.head(10)#первый оператор
 # 
 # *Ответьте на вопрос: равномерно ли распределены пользователи по сегментам или есть выраженные «точки входа» — сегменты с наибольшим числом пользователей?*
 # 
-# Пользователи распределены не линейно. По каждому сегменту есть выраженные "точки входа". Так. например, по `признаку устройства` - это `mobile`, по `типу мероприятия` - `концерты` и `"другое"`, наиболее активный `оператор` - `"Билеты без проблем"`. По `региону` - `Каменевский регион`.  
+# Пользователи распределены неравномерно. По каждому сегменту есть выраженные "точки входа". Так. например, по `признаку устройства` - это `mobile`, по `типу мероприятия` - `концерты` и `театр`, наиболее активный `оператор` - `"Билеты без проблем"`. По `региону` - `Каменевский регион`.  
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Ты верно выполнил техническую часть задания: сгруппировал пользователей по всем четырем требуемым признакам (мероприятие, устройство, регион, оператор). Данные в сводных таблицах рассчитаны корректно, а для анализа использованы правильные метрики - общее количество и доля от общего числа.
+# 
+# Итоговый вывод соответствует цифрам. Ты правильно определил, что распределение неравномерное, и верно подсветил сегменты с наибольшим числом пользователей в каждой категории. Лидеры определены безошибочно: mobile, концерты, Билеты без проблем и Каменевский регион.
+
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> В выводе ты пишешь, что пользователи распределены не линейно. В контексте частотных распределений и статистики правильнее использовать термин не равномерно. Линейность обычно описывает зависимость одной величины от другой, а здесь речь идет о плотности распределения по категориям.
+# 
+# При анализе типов мероприятий ты выделил концерты и категорию другое. Формально другое действительно на втором месте, но для бизнеса эта категория малоинформативна. Лучше обращать внимание на следующий по величине конкретный жанр. В данном случае это театр, который занимает существенную долю рынка (около 20%), что является важным инсайтом, который стоит упомянуть.
 
 # ---
 # 
@@ -836,10 +1080,10 @@ df_fs.head(10)#первый оператор
 # ---
 # 
 
-# In[55]:
+# In[57]:
 
 
-df_fe[('count', 'total_orders', 'share2')].sort_values(ascending=False).plot(
+events[('count', 'total_orders', 'share2')].sort_values(ascending=False).plot(
     kind='bar', 
     xlabel='Тип события', 
     ylabel='Доля', 
@@ -853,7 +1097,7 @@ df_fe[('count', 'total_orders', 'share2')].sort_values(ascending=False).plot(
     )
 plt.show()
 
-df_fe[('count', 'total_orders', 'share_tot')].sort_values(ascending=False).plot(
+events[('count', 'total_orders', 'share_tot')].sort_values(ascending=False).plot(
     kind='bar', 
     xlabel='Тип события', 
     ylabel='Доля', 
@@ -867,68 +1111,23 @@ df_fe[('count', 'total_orders', 'share_tot')].sort_values(ascending=False).plot(
     )
 plt.show()
 
-print('Медиана: ',df_fe[('count', 'total_orders', 'share2')].median())
-print('Среднее: ',df_fe[('count', 'total_orders', 'share2')].mean())
-print(df_fe.sort_values(by=df_fe.columns[3], ascending=False))
+print('Медиана: ',events[('count', 'total_orders', 'share2')].median())
+print('Среднее: ',events[('count', 'total_orders', 'share2')].mean())
+print(events.sort_values(by=events.columns[3], ascending=False))
 
+
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> На графики этого типа удобнее было бы добавить `axvline` (`axhline` для устройства, так как там гистограмма вертикальная) со средним уровнем возврата по выборке для более удобного анализа точек входа.
 
 # По признаку первое посещенное меропритие чаще всего возвращаются пользователи, посетившие `Выставки`, `Театр`, `Концерты`. При этом доля `Выставок` в общем количестве довольно низкая, что может указывать на нестабильность результата по этому параметру.
-
-# In[56]:
-
-
-##попробуем другой формат представления графиков
-df_fd[[('count', 'total_orders', 'share2'),('count', 'total_orders', 'share_tot')]].sort_values(by=df_fd.columns[3], ascending=False).plot(
-    kind='bar', 
-    xlabel='Тип события', 
-    ylabel='Доля', 
-    legend=True,
-    rot=45, 
-    title='Доля пользователей, совершивших два и более заказа', 
-    figsize=(10,4),
-    fontsize = 12,
-    color = ['royalblue','navy'],
-    edgecolor='black'
-    )
-plt.legend(labels=['Доля 2 заказа и более', 'Доля в сегменте'])  # новые подписи
-plt.show()
-
-print('Медиана: ',df_fd[('count', 'total_orders', 'share2')].median())
-print('Среднее: ',df_fd[('count', 'total_orders', 'share2')].mean())
-print(df_fd.sort_values(by=df_fd.columns[3], ascending=False))
-
-
-# Пользователи, сделавшие первый заказ через `desktop` возвращаются лишь немного чаще, но их почти в 5 раз меньше.
-
-# In[57]:
-
-
-df_fr10[[('count', 'total_orders', 'share2'),('count', 'total_orders', 'share_tot')]].head(10).sort_values(by=df_fr.columns[3], ascending=False).plot(
-    kind='bar', 
-    xlabel='Тип события', 
-    ylabel='Доля', 
-    legend=True,
-    rot=45, 
-    title='Доля пользователей, совершивших два и более заказа', 
-    figsize=(10,4),
-    fontsize = 12,
-    color = ['royalblue','navy'],
-    edgecolor='black'
-    )
-plt.legend(labels=['Доля 2 заказа и более', 'Доля в сегменте'])  # новые подписи
-plt.show()
-
-print('Медиана: ',df_fr[('count', 'total_orders', 'share2')].median())
-print('Среднее: ',df_fr[('count', 'total_orders', 'share2')].mean())
-print(df_fr10.sort_values(by=df_fr10.columns[3], ascending=False))
-
-
-# Наиболее активные регионы представлены в таблице выше в порядке снижения доли пользователей, совершивших не менее двух заказов. Наибольшая доля вернувшихся пользователей - в Шанурском регионе, при этом в Каменевском регионе - наибольшее количество пользователей, но доля пользователей с 2 и более заказами - 6я по счету. 
 
 # In[58]:
 
 
-df_fs10[[('count', 'total_orders', 'share2'),('count', 'total_orders', 'share_tot')]].head(10).sort_values(by=df_fs.columns[3], ascending=False).plot(
+##попробуем другой формат представления графиков
+device[[('count', 'total_orders', 'share2'),('count', 'total_orders', 'share_tot')]].sort_values(by=device.columns[3], ascending=False).plot(
     kind='bar', 
     xlabel='Тип события', 
     ylabel='Доля', 
@@ -943,14 +1142,96 @@ df_fs10[[('count', 'total_orders', 'share2'),('count', 'total_orders', 'share_to
 plt.legend(labels=['Доля 2 заказа и более', 'Доля в сегменте'])  # новые подписи
 plt.show()
 
-print('Медиана: ',df_fs[('count', 'total_orders', 'share2')].median())
-print('Среднее: ',df_fs[('count', 'total_orders', 'share2')].mean())
-print(df_fs10.sort_values(by=df_fs10.columns[3], ascending=False))
+print('Медиана: ',device[('count', 'total_orders', 'share2')].median())
+print('Среднее: ',device[('count', 'total_orders', 'share2')].mean())
+print(df_fd.sort_values(by=device.columns[3], ascending=False))
+
+
+# Пользователи, сделавшие первый заказ через `desktop` возвращаются лишь немного чаще, но их почти в 5 раз меньше.
+
+# In[59]:
+
+
+region10[[('count', 'total_orders', 'share2'),('count', 'total_orders', 'share_tot')]].head(10).sort_values(by=region10.columns[3], ascending=False).plot(
+    kind='bar', 
+    xlabel='Тип события', 
+    ylabel='Доля', 
+    legend=True,
+    rot=45, 
+    title='Доля пользователей, совершивших два и более заказа', 
+    figsize=(10,4),
+    fontsize = 12,
+    color = ['royalblue','navy'],
+    edgecolor='black'
+    )
+plt.legend(labels=['Доля 2 заказа и более', 'Доля в сегменте'])  # новые подписи
+plt.show()
+
+print('Медиана: ',region[('count', 'total_orders', 'share2')].median())
+print('Среднее: ',region[('count', 'total_orders', 'share2')].mean())
+print(region10.sort_values(by=region10.columns[3], ascending=False))
+
+
+# Наиболее активные регионы представлены в таблице выше в порядке снижения доли пользователей, совершивших не менее двух заказов. Наибольшая доля вернувшихся пользователей - в Шанурском регионе, при этом в Каменевском регионе - наибольшее количество пользователей, но доля пользователей с 2 и более заказами - 6я по счету. 
+
+# In[60]:
+
+
+service10[[('count', 'total_orders', 'share2'),('count', 'total_orders', 'share_tot')]].head(10).sort_values(by=service.columns[3], ascending=False).plot(
+    kind='bar', 
+    xlabel='Тип события', 
+    ylabel='Доля', 
+    legend=True,
+    rot=45, 
+    title='Доля пользователей, совершивших два и более заказа', 
+    figsize=(10,4),
+    fontsize = 12,
+    color = ['royalblue','navy'],
+    edgecolor='black'
+    )
+plt.legend(labels=['Доля 2 заказа и более', 'Доля в сегменте'])  # новые подписи
+plt.show()
+
+print('Медиана: ',service[('count', 'total_orders', 'share2')].median())
+print('Среднее: ',service[('count', 'total_orders', 'share2')].mean())
+#print(service10.sort_values(by=service10.columns[3], ascending=False))
+
+
+# In[61]:
+
+
+service10.sort_values(by=service10.columns[3], ascending=False)
 
 
 # У всех операторов из топ-10 по количеству пользователей доля повторных заказов выше среднего. Самые лояльные пользователи - у оператора `Край билетов`, но доля рынка последнего на фоне остальных - не велика. Результаты по таким провайдерам могут быть не стаблильными, варьироваться в зависимости от каких-либо факторов. Например, от сезона. 
 # 
-# Поэтому, из тех операторов, у которых доля пользователей выше 10%, самая большая доля клиентов с 2 и более заказами - у оператора `Весь в билетах`. Лидерство по абсолютному значению вернувшихся клиентов - у самого крупного  оператора `Билеты без проблем`.
+# <!-- Поэтому, из тех операторов, у которых доля пользователей выше 10%, самая большая доля клиентов с 2 и более заказами - у оператора `Весь в билетах`. Лидерство по абсолютному значению вернувшихся клиентов - у самого крупного  оператора `Билеты без проблем`. -->
+# 
+# По доле рынка операторов можно разделить на несколько кластеров - 1%-2%, 5%-6%, 10%-20% и более 20%. Если рассматривать операторы с долей рынка более 10%, то самая большая доля вернувшихся клиентов - у оператора `Билеты в руки`. Лидерство по абсолютному значению вернувшихся клиентов - у самого крупного  оператора `Билеты без проблем`.
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Ты правильно рассчитал ключевые метрики: доли пользователей с повторными заказами внутри каждого сегмента. Верно интерпретируешь данные в контексте размера выборки - справедливо отметил, что высокие показатели в категориях с малым количеством пользователей (например, выставки или оператор Край билетов) могут быть нестабильны.
+# 
+# Выводы по типам устройств и регионам логичны. Ты грамотно подсветил разницу между «количеством» и «качеством» аудитории: самый крупный регион действительно не является лидером по удержанию, а пользователи десктопов возвращаются чаще, несмотря на их меньшее число.
+
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> В блоке с регионами ты указываешь конкретное место (6-е) для самого крупного региона. Это верно, но при описании топа полезно явно перечислять те регионы, которые составляют "ядро" лояльности, чтобы картина была полнее, а не только фокусироваться на лидере списка и самом массовом сегменте.
+
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b> Самая грубая ошибка допущена в анализе билетных операторов. Ты пишешь, что среди операторов с долей рынка выше 10% лидирует Весь в билетах. Если сложить количество пользователей всех операторов в таблице, получится около 19 000 человек. 10% от этого числа - это 1 900. У оператора Весь в билетах всего 1 248 пользователей, то есть он занимает около 6,6% рынка и не проходит под твой собственный критерий фильтрации. Тебе нужно пересмотреть этот вывод и найти лидера среди тех, у кого действительно больше 10% аудитории (например, Билеты в руки или Облачко).
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# 
+# Похоже, что ошибся строкой. Правка выше.
+# </div>
 
 # ---
 # 
@@ -961,10 +1242,11 @@ print(df_fs10.sort_values(by=df_fs10.columns[3], ascending=False))
 # 
 # ---
 
-# In[59]:
+# In[62]:
 
 
-df_fe
+print('Сводная таблица - количество вернувшихся и невернувшихся пользователей в разрезе типа мероприятий:')
+display(events)
 
 
 # **Гипотеза 1** странно сформулирована. 
@@ -974,6 +1256,23 @@ df_fe
 # *пользователи, которые совершили первый заказ на спортивные мероприятия, совершают повторный заказ чаще, чем пользователи, оформившие свой первый заказ на концерты* - наоборот: повторную покупку пользователи, совершившие первый заказ на спортмеропрития, совершают реже пользователей, первый заказ которых - концерты. 
 
 # **Гипотеза 2** не поддерждается - это видно по данным одного из предыдущи графиков. У наиболее активных регионов доля хоть и высокая, но существуют регионы с большей доле повторных заказов.
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Ты верно проанализировал данные и пришел к правильным заключениям по обеим гипотезам. Сравнение показателей для спорта и концертов выполнено точно - цифры действительно опровергают предположение о лидерстве спорта, так как показатель удержания там ниже. По второй гипотезе ты также справедливо заметил, что самые массовые регионы уступают по удержанию менее крупным, поэтому прямая связь между активностью региона и возвращаемостью отсутствует.
+
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b> 
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# 
+# А здесь что дорабатывать?
+# </div>
 
 # ---
 # 
@@ -1008,25 +1307,24 @@ df_fe
 
 # При расчете моды по признаку `is_two` были выявлены нулевые значения исходного поля `revenue` преимущественно у оператора Билеты без проблем. Нулевые цены будут искажать статистику при работе с показателями выручки. Исключим такие записи из датафрейма. Отрицательные выручки - возвраты - не велики и не многочисленны, можно их оставить.
 
-# In[60]:
+# In[63]:
 
 
-dff = df.loc[df['avg_revenue_rub'] != 0]
-# dff
+dff = (df.loc[df['avg_revenue_rub'] != 0]).copy()
 
 
-# In[61]:
+# In[64]:
 
 
 #определим стоимость билета и запишем ее в новое поле
 dff['avg_ticket_price']=dff['avg_revenue_rub']/dff['avg_tickets_per_order']
 
 
-# In[62]:
+# In[65]:
 
 
 #гистограмма
-plt.figure(figsize=(10,7))
+plt.figure(figsize=(12,5))
 sns.histplot(data=dff, x='avg_ticket_price', hue='is_two', bins=100, kde=True, stat='density', alpha=0.5)
 plt.fontsize=14
 # оранжевый график должен быть для is_two=1. 
@@ -1061,55 +1359,43 @@ plt.show()
 plt.figure(figsize=(8,3))
 sns.histplot(data=dff, x='avg_ticket_price', hue='is_two', bins=100, kde=True, stat='count', alpha=0.5)
 plt.fontsize=14
-plt.title('Распределение средней цены билета среди пользователей с двумя и более заказами')
+plt.title('Распределение средней цены билета в разных группах пользователей')
 plt.xlabel('Средняя цена билета')
 plt.ylabel('Количество')
 plt.show()
 
 
-# In[63]:
+# Распределение пользователей обеих групп пользователей - скошенное вправо: практически все покупатели из обеих групп делают покупки до 1000 руб.  Большинство - до ~600 руб. 
+# Пики распределения находятся рядом, но у второй группы пик смещен вправо Это может указывать на то, что лояльные пользователи чаще склонны к более дорогим покупкам. Но разница между группами потребителей хоть и заметна, не выглядит существенной.
 
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Ты проявил внимательность и заметил несоответствие в описании задачи: просили выручку с билета, а переменную указали для выручки с заказа. Решение рассчитать честную стоимость билета через деление на количество билетов - отличное, это показывает, что ты критически подходишь к данным, а не просто следуешь инструкции.
+# 
+# Также правильно сделано, что ты отфильтровал нулевые значения, чтобы не искажать статистику, и использовал график плотности (KDE). Поскольку выборка разовых пользователей значительно больше выборки лояльных, сравнивать их на обычной гистограмме по абсолютному количеству было бы сложно, а график плотности решает эту проблему.
 
-# d1=dff['avg_ticket_price'].loc[dff['is_two']==0]
-# d2=dff['avg_ticket_price'].loc[dff['is_two']==1]
-# kde1 = stats.gaussian_kde(d1)
-# kde2 = stats.gaussian_kde(d2)
-# x_vals1 = np.linspace(d1.min(), d1.max(), 1000)
-# y_vals1 = kde(x_vals1)
-# x_vals2 = np.linspace(d2.min(), d2.max(), 1000)
-# y_vals2 = kde(x_vals2)
-# peak_x1 = x_vals1[np.argmax(y_vals1)]  
-# peak_y1 = y_vals1.max()            
-# peak_x2 = x_vals2[np.argmax(y_vals2)]  
-# peak_y2 = y_vals2.max()            
-# print(f"Пик KDE1: x = {peak_x1:.3f}, плотность = {peak_y1:.4f}")
-# print(f"Пик KDE2: x = {peak_x2:.3f}, плотность = {peak_y2:.4f}")
-# print(d1.count())
-# print(d2.count())
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> 
 
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b> Вывод получился слишком общим. В задании был конкретный вопрос: «В каких диапазонах средней выручки концентрируются пользователи из каждой группы?». Тебе стоило указать цифры, например, что основная масса покупок у обеих групп лежит в диапазоне от 0 до определенной суммы.
+# 
+# Утверждение, что возвращающиеся пользователи покупают более дорогие билеты, стоит уточнить. Судя по графику плотности, пики у обеих групп находятся очень близко, просто у лояльных пользователей график чуть смещен вправо, и меньше доля совсем дешевых покупок. Разница есть, но она не выглядит кардинальной — это скорее нюанс распределения, чем явное предпочтение дорогого сегмента.
+# 
+# На сборном графике с тремя гистограммами у второго и третьего графика одинаковые заголовки - похоже на ошибку копирования.
 
-# Пользователи, совершивших два и более заказа, чаще покупают более дорогие билеты,
-
-# In[64]:
-
-
-dff.groupby(['is_two'])['avg_ticket_price'].mean()
-
-
-# In[ ]:
-
-
-
-
-
-# In[65]:
-
-
-aaa = dff.loc[dff['is_two'] == 1, 'avg_ticket_price']
-type(aaa)
-aaa.count()
-aaa.mode()
-
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# 
+#     Правка - выше, перед комментарием
+# 
+# </div>
 
 # ---
 # 
@@ -1125,9 +1411,6 @@ aaa.mode()
 
 # In[66]:
 
-
-# dff['is_two_four'] = ((dff['total_orders'] > 1) & (dff['total_orders'] < 5)).astype(int)
-# dff
 
 dff['is_two_four'] = 0
 dff.loc[dff['total_orders'] <= 1, 'is_two_four'] = 0
@@ -1145,22 +1428,10 @@ sns.histplot(data=aa, x='avg_revenue_rub', hue='is_two_four',
              palette='muted',
              bins=100, kde=True, stat='density', alpha=0.5)
 plt.fontsize=14
-# plt.legend(labels=['KDE, 5+ заказов','KDE, 2-4 заказа','5+ заказов','2-4 заказа','k']) ###########
 plt.title('Распределение средней выручки с заказа')
 plt.xlabel('Средняя выручка с заказа')
 plt.ylabel('Плотность')
 plt.show()
-
-# #гистограмма
-# plt.figure(figsize=(10,5))
-# aa=dff[dff['is_two_four'] >= 1]
-# sns.histplot(data=aa, x='avg_revenue_rub', hue='is_two_four', palette='muted',
-#                  bins=100, kde=True, stat='count', alpha=0.5)
-# plt.fontsize=14
-# plt.title('Распределение средней выручки с заказа')
-# plt.xlabel('Средняя выручка с заказа')
-# plt.ylabel('Количество')
-# plt.show()
 
 
 # Мода средней выручки с пользователей, совершивших 5 и более заказов, ниже аналогичного значения для пользователей с 2-4 заказами:
@@ -1184,6 +1455,18 @@ dff.groupby(['is_two_four'])['avg_revenue_rub'].mean()
 # Ответьте на вопрос: есть ли различия по значению средней выручки с заказа между пользователями этих двух групп?
 #     
 # Значение средней выручки для покупателей с 5 и более заказами несущественно выше аналогичного значения для группы пользователей с 2-4 заказами - 585 руб. против 582.7 руб. 
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Ты выбрал правильный тип графика для сравнения распределений. Поскольку количество пользователей в группах разное, обычная гистограмма могла бы исказить восприятие, а плотность позволяет корректно сравнить структуру данных.
+# 
+# Расчет средних значений во второй части выполнен верно. Вывод о том, что средний чек между группами лояльных и «средних» пользователей практически не отличается (разница всего в 3 рубля), полностью подтверждается цифрами.
+
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> Описание графика выглядит немного притянутым. Ты пишешь, что характер распределения «несколько иной» и для второй группы наблюдается рост, а затем снижение. Визуально оба графика имеют очень схожую форму (скошенное вправо распределение) - пик находится в начале, а затем идет длинный хвост. Различия в форме кривых минимальны и скорее говорят о том, что структура трат у этих групп одинаковая, чем о каких-то принципиальных различиях в поведении.
 
 # ---
 # 
@@ -1211,16 +1494,38 @@ dff['avg_tickets_per_order'].max()
 # In[71]:
 
 
+dff['ticket_group'] = pd.cut(dff['avg_tickets_per_order'], bins=[1,2,3,5,100], right=False, labels=['1-2 билета','2-3 билета','3-5 билетов','5< билетов'])
+
+
+# In[72]:
+
+
 plt.figure(figsize=(14,5))
 sns.histplot(data=dff, x='avg_tickets_per_order', hue='is_two', 
              palette='muted',
              bins=12, kde=False, stat='density', alpha=0.8)
 plt.fontsize=14
-# plt.legend(labels=['KDE, 5+ заказов','KDE, 2-4 заказа','5+ заказов','2-4 заказа','k']) ###########
 plt.title('Распределение среднего количества билетов в заказе')
-# plt.xlabel('Количество билетов')
 plt.show()
 
+plt.figure(figsize=(14,5))
+sns.countplot(data=dff, x='ticket_group', hue='is_two'  )
+plt.fontsize=14
+plt.title('Распределение среднего количества билетов в заказе')
+plt.show()
+
+
+# 
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b> Для анализа распределения дискертного признака нужен тип графиков, который на каждое уникальные значение признака строит свою корзину. Например, можно использовать `sns.countplot`.
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# Перенёс разделение на группы на предыдущий шаг, т.к. countplot не работает без категорий
+# </div>
 
 # Пользователи, совершившие 2+ заказа, чаще покупают 2-4 билета. Совершившие 1 заказ - также 2-4 билета, но доля таких ниже. Распределение пользователей с одним заказом болшее равномерное - чаще готовы покупать ~4 билета. Доли покупателей с заказом менее двух билетов примерно одинаковые в обеих группах пользователей.
 
@@ -1234,13 +1539,13 @@ plt.show()
 #  - каждого сегмента общее число пользователей
 #  - долю пользователей, совершивших повторные заказы.
 
-# In[72]:
-
-
-dff['ticket_group'] = pd.cut(dff['avg_tickets_per_order'], bins=[1,2,3,5,100], right=False, labels=['A','B','C','D'])
-
-
 # In[73]:
+
+
+#разделение на группы перенес на предыдущий шаг
+
+
+# In[74]:
 
 
 #проверка на пропуски
@@ -1248,30 +1553,20 @@ dff.loc[dff['ticket_group'].isna()==True]['avg_tickets_per_order']
 dff['ticket_group'].value_counts().sum() #???
 
 
-# In[74]:
-
-
-pt_t = pd.pivot_table(data=dff, index='ticket_group', values=['total_orders'], columns='is_two', aggfunc=['count'])
-df_t = pd.DataFrame(pt_t)
-df_t[('count', 'total_orders', 'total')] = df_t[('count', 'total_orders', 0)]+df_t[('count', 'total_orders', 1)]
-df_t[('count', 'total_orders', 'share2')] = df_t[('count', 'total_orders', 1)]/(df_t[('count', 'total_orders', 0)]+df_t[('count', 'total_orders', 1)])
-df_t
-
-
-# Ответьте на вопросы:
-# 
-# Как распределены пользователи по сегментам — равномерно или сконцентрировано?
-# - Пользователи распределены неравномерно. 
-# 
-# Есть ли сегменты с аномально высокой или низкой долей повторных покупок?
-# - Немногим больше 50% пользователей в группах A (1-2 билетов) и С (3-5 билетов) совершают две и более покупки (заказа)
-# - ~72% пользователей, купивших 2-3 билета совершают не менее 2 заказов - можно считать показатель аномально высоким.
-# - Только 19% пользователей с заказами с более, чем 5 билетов, возвращаются за повторной покупкой.
-
 # In[75]:
 
 
-df_t[('count', 'total_orders', 'share2')].sort_values(ascending=False).plot(
+pt = pd.pivot_table(data=dff, index='ticket_group', values=['total_orders'], columns='is_two', aggfunc=['count'])
+ticket_group = pd.DataFrame(pt)
+ticket_group[('count', 'total_orders', 'total')] = ticket_group[('count', 'total_orders', 0)]+ticket_group[('count', 'total_orders', 1)]
+ticket_group[('count', 'total_orders', 'share2')] = ticket_group[('count', 'total_orders', 1)]/(ticket_group[('count', 'total_orders', 0)]+ticket_group[('count', 'total_orders', 1)])
+ticket_group
+
+
+# In[76]:
+
+
+ticket_group[('count', 'total_orders', 'share2')].plot(
     kind='bar', 
     xlabel='Группа пользователей', 
     ylabel='Доля', 
@@ -1285,6 +1580,44 @@ df_t[('count', 'total_orders', 'share2')].sort_values(ascending=False).plot(
     )
 plt.show()
 
+
+# Ответьте на вопросы:
+# 
+# Как распределены пользователи по сегментам — равномерно или сконцентрировано?
+# - Пользователи распределены неравномерно. 
+# 
+# Есть ли сегменты с аномально высокой или низкой долей повторных покупок?
+# - Немногим больше 50% пользователей в группах A (1-2 билетов) и С (3-5 билетов) совершают две и более покупки (заказа)
+# - ~72% пользователей, купивших 2-3 билета совершают не менее 2 заказов - можно считать показатель аномально высоким.
+# - Только 19% пользователей с заказами с более, чем 5 билетов, возвращаются за повторной покупкой.
+# 
+# Последняя наименее лояльная группа D - вероятно большие компании, тургруппы, оптовые покупки и тд. 
+# 
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Ты правильно выполнил сегментацию пользователей и верно рассчитал целевую метрику - долю повторных заказов (share2) для каждой группы. Таблица получилась информативной: по ней сразу видно, что ядро аудитории - это группы B (2-3 билета) и C (3-5 билетов), в то время как группы A и D значительно меньше.
+
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b> Самый важный инсайт, который ты упустил в текстовом выводе - это аномально низкая возвращаемость в группе D (5 и более билетов). В таблице видно, что их share2 всего ~19%, что в разы меньше, чем у остальных (50-70%). Это и есть ответ на вопрос задачи про сегменты с аномалиями. Скорее всего, это оптовые закупки или разовые групповые походы (школы, тургруппы), и для бизнеса важно понимать, что эти клиенты почти не возвращаются.
+# 
+# Визуализацию на последнем графике (столбчатая диаграмма) лучше делать логически упорядоченной. Сейчас группы идут вперемешку (B, C, A, D), вероятно, по убыванию значений. Гораздо нагляднее расположить их в естественном порядке количества билетов (A → B → C → D). Это позволило бы сразу увидеть паттерн: низкая лояльность у одиночек → пик лояльности у пар/семей → резкое падение у больших групп. Также подписи на оси X лучше заменить с букв на понятные интервалы ("1-2 билета" и т.д.).
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# 
+# Про группу D я пишу в третьем буллите, а в комментарии к выводам в конце вы это тоже отмечаете: 
+#     
+# `Только 19% пользователей с заказами с более, чем 5 билетов, возвращаются за повторной покупкой.`
+# 
+# Дополнил комментарием, что это чаще всего групповые покупки, которые не возращаются под тем же id.
+# 
+# Переименовал категории A,B,C,D на "1-2 билета" и т.д. и убрал сортировку по убыванию доли.
+# </div>
 
 # ---
 # 
@@ -1307,27 +1640,27 @@ plt.show()
 # ---
 # 
 
-# In[76]:
+# In[77]:
 
 
 # Определяем номер днянедели
 dff['weekday'] = dff['first_order_dt'].dt.weekday + 1
 
 
-# In[77]:
-
-
-pt_wd = pd.pivot_table(data=dff, index='weekday', values=['total_orders'], columns='is_two', aggfunc=['count'])
-df_wd = pd.DataFrame(pt_wd)
-df_wd[('count', 'total_orders', 'total')] = df_wd[('count', 'total_orders', 0)]+df_wd[('count', 'total_orders', 1)]
-df_wd[('count', 'total_orders', 'share2')] = df_wd[('count', 'total_orders', 1)]/(df_wd[('count', 'total_orders', 0)]+df_wd[('count', 'total_orders', 1)])
-df_wd
-
-
 # In[78]:
 
 
-df_wd[('count', 'total_orders', 'share2')].sort_values(ascending=False).plot(
+pt = pd.pivot_table(data=dff, index='weekday', values=['total_orders'], columns='is_two', aggfunc=['count'])
+week_day = pd.DataFrame(pt)
+week_day[('count', 'total_orders', 'total')] = week_day[('count', 'total_orders', 0)]+week_day[('count', 'total_orders', 1)]
+week_day[('count', 'total_orders', 'share2')] = week_day[('count', 'total_orders', 1)]/(week_day[('count', 'total_orders', 0)]+week_day[('count', 'total_orders', 1)])
+week_day
+
+
+# In[79]:
+
+
+week_day[('count', 'total_orders', 'share2')].sort_values(ascending=False).plot(
     kind='bar', 
     xlabel='День недели', 
     ylabel='Доля', 
@@ -1344,6 +1677,16 @@ plt.show()
 
 # День недели не влияет на вероятность возврата пользователя
 
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Ты верно выполнил техническую часть: сгруппировал данные по дням недели и рассчитал долю вернувшихся пользователей. Вывод соответствует полученным цифрам - разброс значений действительно минимален (в пределах нескольких процентов), что позволяет говорить об отсутствии сильного влияния дня недели на лояльность.
+
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> В таблице дни недели остались в формате цифр. Для удобства восприятия лучше заменять их на текстовые названия (Понедельник, Вторник...), чтобы читателю не приходилось в уме сопоставлять цифры с календарем. Также можно немного расширить вывод, отметив небольшую тенденцию к снижению доли возвратов к выходным, даже если она статистически незначима.
+
 # ---
 # 
 # **Задача 4.3.2.** Изучите, как средний интервал между заказами влияет на удержание клиентов.
@@ -1356,22 +1699,16 @@ plt.show()
 # ---
 # 
 
-# In[79]:
+# In[80]:
 
 
 dff['btw_ord_group'] = pd.cut(dff['total_orders'], bins=[1,2,5,100], right=False, labels=['1 заказ','2-4 заказа','5+ заказов'])
 
 
-# In[80]:
-
-
-dff['btw_ord_group'].isna().sum()
-
-
 # In[81]:
 
 
-# dff
+dff['btw_ord_group'].isna().sum()
 
 
 # In[82]:
@@ -1393,21 +1730,37 @@ dff['avg_days_between_orders'].max()
 
 
 plt.figure(figsize=(14,5))
-sns.histplot(data=dff, x='avg_days_between_orders', #hue='is_two', 
-#              palette='muted',
+sns.histplot(data=dff, x='avg_days_between_orders', hue='btw_ord_group', 
              bins=15, kde=True, stat='probability', alpha=0.8)
 plt.fontsize=14
 plt.title('Распределение среднего интервала между заказами')
 plt.show()
 
 
-# Вероятность того, что пользователь сделает повторный заказ снижается по мере увеличения интервала между заказами. Первые 10 дней - наиболее важные: вероятность возврата составляет 50%. К концу второй декады вероятность снижается до 20%.
+# Вероятность того, что пользователь сделает повторный заказ снижается по мере увеличения интервала между заказами. Первые 10 дней - наиболее важные: для группы 2-4 заказа вероятность возврата составляет чуть менее 30%. К концу второй декады вероятность снижается до 5%. 
 
-# In[ ]:
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Ты верно выполнил все этапы задачи. Результаты расчетов показывают сильную и логичную связь: пользователи, совершившие 5 и более заказов, имеют вдвое меньший средний интервал между покупками (11.16 дня) по сравнению с группой 2–4 заказов (21.40 дня).
 
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> В финальном выводе стоит явно связать два ключевых результата. Сейчас ты их представил отдельно. Анализ будет сильнее, если ты прямо укажешь, что группа пользователей с 5+ заказами (11.16 дня) попадает в критически важный интервал (до 20 дней), что и обеспечивает им высокую лояльность, в то время как средний интервал группы 2–4 заказа (21.40 дня) уже находится в зоне низкого удержания.
 
+# <div class="alert alert-block alert-danger">
+# <h2> Комментарий ревьюера <a class="tocSkip"></h2>
+# 
+#     
+# <b>На доработку❌:</b> График выше показывает относительное распределение значений `avg_days_between_orders`, но ничего не говорит о склонности к возврату. Тут стоит визуализировать распределение `avg_days_between_orders` в разрезе групп, чтобы видеть влияние `avg_days_between_orders` на возврат.
 
-
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# 
+# Перерисовал график в разрезе групп
+# 
+# </div>
 
 # ---
 # 
@@ -1442,24 +1795,11 @@ df_corr2 = dff[['total_orders_segment','first_device','first_region','first_serv
 
 int_cols1=['total_orders','avg_revenue_rub','avg_tickets_per_order','avg_days_between_orders','avg_ticket_price']
 int_cols2=['avg_revenue_rub','avg_tickets_per_order','avg_days_between_orders','avg_ticket_price']
-# bins_dict = {'total_orders': [1, 2, 5, 1000]}
-corr_matrix1 = df_corr1.phik_matrix(interval_cols=int_cols1)#), bins=bins_dict)
-corr_matrix2 = df_corr2.phik_matrix(interval_cols=int_cols2)#), bins=bins_dict)
+corr_matrix1 = df_corr1.phik_matrix(interval_cols=int_cols1)
+corr_matrix2 = df_corr2.phik_matrix(interval_cols=int_cols2)
 
 
 # In[86]:
-
-
-#corr_matrix1['total_orders']
-
-
-# In[87]:
-
-
-#corr_matrix2['total_orders_segment']
-
-
-# In[88]:
 
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
@@ -1470,7 +1810,30 @@ sns.heatmap(corr_matrix2[['total_orders_segment']], ax=ax2, cmap='coolwarm', ann
 plt.show()
 
 
-# Наибольшая связь с количеством заказов прослеживается у полей `"Среднее количество дней между заказами/avg_days_between_orders"` `"Среднее коичество билетов в заказе/avg_tickets_per_order"`. Оценка влияния этих факторов на вероятность возврата приведена в предыдущих пунктах.
+# Наибольшая связь с количеством заказов прослеживается у полей `"Среднее количество дней между заказами/avg_days_between_orders"` `"Среднее количество билетов в заказе/avg_tickets_per_order"`. Оценка влияния этих факторов на вероятность возврата приведена в предыдущих пунктах.
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> Ты отлично справился с технической частью задания: рассчитал корреляцию и, что важно, выполнил требование по сегментации количества заказов. Сравнительная тепловая карта наглядно показывает, как меняются коэффициенты при переходе от непрерывной переменной к интервальной.
+# 
+# Вывод корректен и полностью опирается на данные графика: ты безошибочно выделил признаки с наибольшей связью - среднее количество дней между заказами и количество билетов.
+
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> Обрати внимание на то, как изменилась корреляция для признака first_region (регион). В первом столбце она была нулевой (0.00), а после сегментации выросла до 0.11. Хотя связь осталась слабой, этот скачок подтверждает гипотезу из задания: разбиение на группы помогает выявить скрытые зависимости, которые теряются при анализе «в лоб». Стоило упомянуть этот момент, так как он демонстрирует пользу проведенной тобой сегментации.
+# 
+# Также есть небольшая опечатка в текстовом выводе под графиком: «коичество» вместо «количество».
+# 
+# Касательно лидера корреляции - среднего количества дней между заказами. Здесь стоит быть аккуратнее с интерпретацией. Эта связь во многом техническая: чтобы посчитать среднее количество дней между заказами, у пользователя должно быть минимум два заказа. То есть наличие значения в этом поле уже подразумевает, что заказов больше одного. Это так называемая утечка данных (data leakage), о чем полезно помнить при продуктовом анализе.
+
+# <div class="alert alert-info">
+# <h2> Комментарий студента <a class="tocSkip"> </h2>
+# Количество поправил, спасибо) 
+#     
+# Да, скачок 0.00 - 0.11 сразу заметил. Но, т.к. связь совсем слабая, про этот эффект упоминать не стал. Вообще ожидал увидеть более сильные связи. На мой взгляд 0.38 тоже довольно таки слабая связь.  
+# </div>
 
 # ### 5. Общий вывод и рекомендации
 # 
@@ -1537,9 +1900,27 @@ plt.show()
 # 4. При выявлении соответствуюещей необходимости проводить модернизацию интерфейса приложения/сайта.
 # 5. Т.к. количество дней сильно влияет на возврат пользователей, необходимо провести дополнительный анализ: нужно определить, что конкретно заставляет пользователя вернуться за следующим заказом в разрезе категорий мероприятий. По итогам провести соотвествующую доработку приложения и модернизировать алгоритмы отбора мероприятий. 
 # 6. Между значимыми изменениями в работе проекта необходимо проводить A/B тестирование, внедрять изменения поэтапно для разных групп пользователей. 
-# 7. 
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
 # 
+# <b>Все отлично!👍:</b> Все обязательные пункты, перечисленные в задании, раскрыты в общем выводе:
 # 
+# 1. Информация о данных: Ты описал исходный объем, конвертацию тенге в рубли, а также ключевые этапы подготовки данных: фильтрацию выбросов по 95-му перцентилю и исключение нулевых значений.
+# 
+# 2. Основные статистические показатели: Указано общее количество пользователей (20 864), неравномерное распределение по числу заказов и медианный интервал между покупками (9 дней).
+# 
+# 3. Признаки первого заказа: Верно отмечено, что на лояльность влияют количество билетов, тип мероприятия, устройство, регион и оператор.
+# 
+# 4. Билеты в заказе: Точно названа аномалия - пользователи, покупающие 2-3 билета, самые лояльные (72% возврата), а пользователи с 5+ билетами имеют аномально низкий возврат (19%).
+# 
+# 5. Выручка: Обоснован вывод о том, что пользователи с 2+ заказами предпочитают более дорогие мероприятия (что коррелирует с их доходом).
+# 
+# 6. Временные характеристики: Подтверждено, что день недели не влияет на удержание, а интервалы между покупками влияют существенно, что является одним из главных выводов.
+# 
+# 7. Корреляционный анализ: Верно выделены два наиболее связанных с количеством заказов признака: среднее количество дней между заказами и среднее количество билетов в заказе.
+#     
+# Предложенные рекомендации логически вытекают из результатов анализа.
 
 # ### 6. Финализация проекта и публикация в Git
 # 
@@ -1554,3 +1935,31 @@ plt.show()
 # 5. Загрузите проект в публичный репозиторий — например, на GitHub. Убедитесь, что все нужные файлы находятся в репозитории, исключая те, что в `.gitignore`. Ссылка на репозиторий понадобится для отправки проекта на проверку. Вставьте её в шаблон проекта в тетрадке Jupyter Notebook перед отправкой проекта на ревью.
 
 # https://github.com/dimaxi1007/afisha
+
+# <div class="alert alert-success">
+# <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+# 
+# <b>Все отлично!👍:</b> В репозитории корректно размещены все нужные файлы проекта, подключение к базе данных выполняетяс из файла `.env`.
+
+# <div class="alert alert-warning">
+#     <h2> Комментарий ревьюера <a class="tocSkip"> </h2>
+#     
+# <b>Некоторые замечания и рекомендации⚠️:</b> В `README.md` можно добавить итоговый вывод проекта.
+
+# <div style="border:solid Chocolate 2px; padding: 40px">
+# 
+# # Комментарий ревьюера: общий вывод по проекту.
+# 
+# Дмитрий, проект получился на довольно хорошем уровне - отличная работа над проектом, молодец!
+# 
+# Мне нравится твой аналитический подход к выполнению проекта, ты соблюдаешь структуру работы, выполняешь её последовательно - это очень хорошо! Шаги проекта выполнены по порядку согласно плану проекта, нет смысловых и структурных ям. Важно, что не забываешь про выводы.
+#     
+# Над проектом ещё стоит поработать - есть рекомендации по дополнению некоторых твоих шагов проекта. Такие рекомендации я отметил жёлтыми комментариями. Будет здорово, если ты учтёшь их - так проект станет структурно и содержательно более совершенным.
+#     
+# Также в работе есть критические замечания. К этим замечаниям я оставил пояснительные комментарии красного цвета, в которых перечислил возможные варианты дальнейших действий. Уверен, ты быстро с этим управишься:)
+#     
+# Если о том, что нужно сделать в рамках комментариев, будут возникать вопросы - оставь их, пожалуйста, в комментариях, и я отвечу на них во время следующего ревью.
+#     
+# Также буду рад ответить на любые твои вопросы по проекту или на какие-либо другие, если они у тебя имеются - оставь их в комментариях, и я постараюсь ответить:)
+#     
+# Жду твой проект на повторном ревью. До встречи:)
